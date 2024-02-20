@@ -133,7 +133,8 @@ dl_valid = DataLoader(ds_valid, batch_size=batch_size, shuffle=False, num_worker
 
 # Getting pre-trained embedding
 if args.pretrain or args.freeze:
-    esm_embeddings = torch.load(data_fpath + 'esm1b_pfam_embs.pt')
+    esm_embeddings = torch.load(data_fpath + 'esm1b_pfam_embs.pt')                        # esm!!!
+    
     pfams, names = parse_fasta(data_fpath + 'final_pfams.fasta', return_names=True)
     names = [name.split(';')[-2] for name in names]
     new_idx = np.array([domains[name] for name in names]) - min(domain_tokens) - 1
