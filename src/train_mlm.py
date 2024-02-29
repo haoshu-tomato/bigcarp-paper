@@ -154,7 +154,7 @@ torch.cuda.set_device(args.gpu)
 device = torch.device('cuda:%d' %args.gpu)
 if args.freeze:
     model = ByteNetLM(n_tokens, d_embedding, d_model, n_layers, kernel_size, r, slim=(not args.wide),
-                  padding_idx=mask_idx, causal=args.ar, final_ln=True, activation='gelu', n_frozen_embs=n_frozen_embs)
+                  padding_idx=mask_idx, causal=args.ar, final_ln=True, activation='gelu', n_frozen_embs=n_frozen_embs)            # final_ln: final layer-norm
 else:
     model = ByteNetLM(n_tokens, d_embedding, d_model, n_layers, kernel_size, r, slim=(not args.wide),
                   padding_idx=mask_idx, causal=args.ar, final_ln=True, activation='gelu')
