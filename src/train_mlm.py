@@ -141,7 +141,7 @@ if args.pretrain or args.freeze:
     n_frozen_embs = len(esm_embeddings)
 
 # Load model
-d_embedding = args.d_embedding
+d_embedding = args.d_embedding            # default = 1280
 d_model = args.d_model
 n_layers = args.n_layers
 kernel_size = args.kernel_size
