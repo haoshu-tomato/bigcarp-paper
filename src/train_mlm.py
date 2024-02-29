@@ -159,6 +159,8 @@ else:
     model = ByteNetLM(n_tokens, d_embedding, d_model, n_layers, kernel_size, r, slim=(not args.wide),
                   padding_idx=mask_idx, causal=args.ar, final_ln=True, activation='gelu')
 optimizer = FusedAdam(model.parameters(), lr=lr)
+
+### ----------------------------------------------------------------------------
 if args.restart:
     checkpoints = os.listdir(args.out_fpath)
     last_epoch = -1
@@ -187,6 +189,9 @@ else:
         with torch.no_grad():
             model.embedder.embedder.weight[len(specials) + 1:] = torch.nn.Parameter(torch.tensor(esm_embeddings))
             torch.save({'model_state_dict': model.state_dict()}, args.out_fpath + 'esm_loaded.tar')
+
+### ----------------------------------------------------------------------------
+
 model = model.to(device)
 optimizer.state = {}
 model, optimizer = amp.initialize(model, optimizer, opt_level=opt_level)
