@@ -279,6 +279,10 @@ def step(model, batch, train):
         optimizer.step()
     return loss.item(), accu.item(), mask.sum().item()
 
+
+
+
+
 n_parameters = sum(p.numel() for p in model.parameters())
 print('%d model parameters' % n_parameters)
 print('%d training sequences' % n_train)
