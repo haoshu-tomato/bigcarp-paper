@@ -55,10 +55,12 @@ df.columns = ['name', 'activity', 'domains']
 data_fpath += 'dedup/'
 with open(data_fpath + 'final_domain_vocab.json') as f:
     tokens = json.load(f)
+
 specials = tokens['specials']
 domains = tokens['domains']
-domain_tokens = np.array([domains[d] for d in domains])
 n_tokens = tokens['size']
+
+domain_tokens = np.array([domains[d] for d in domains])  # = [58,    59, ..., 19506, 19507, 19508]
 padding_idx = specials['-']
 mask_idx = specials['#']
 
