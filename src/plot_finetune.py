@@ -48,10 +48,9 @@ val_fpath = data_fpath + 'output/MiBIG_1406_dataset.txt'                    # Mi
 df = pd.read_csv(val_fpath, header=None)
 df.columns = ['name', 'activity', 'domains']
 
-#----------------------------------------------------#
 
 
-#--------------------- create vocab ---------------------#
+#--------------------- final_domain_vocab.json ---------------------#
 data_fpath += 'dedup/'
 with open(data_fpath + 'final_domain_vocab.json') as f:
     tokens = json.load(f)
@@ -68,6 +67,8 @@ mask_idx = specials['#']
 
 classes = ['Alkaloid', 'Saccharide', 'NRP', 'Terpene', 'Polyketide', 'Other', 'RiPP']
 class_to_col = {c:i for i, c in enumerate(classes)}
+
+#--------------------- bgc_class_mapping.json ---------------------#
 with open(data_fpath + 'bgc_class_mapping.json') as f:
     mapping = json.load(f)
 token_to_columns = {}
