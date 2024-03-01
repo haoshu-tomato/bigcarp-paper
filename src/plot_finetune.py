@@ -35,6 +35,8 @@ _ = fig.savefig('/home/kevyan/src/bgc/results/supervised.jpg', bbox_inches='tigh
 
 grouped = df.groupby(['init', 'finetune'])['valid_auc'].max()                                               # new df later
 
+
+#-------------------- mibig.npz --------------------#
 results = []
 for ini in init:
     results.append(softmax(np.load('/home/kevyan/src/bgc/results/%s/mibig.npz' %ini)['first'], axis=-1))
