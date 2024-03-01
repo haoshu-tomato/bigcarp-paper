@@ -51,6 +51,7 @@ df.columns = ['name', 'activity', 'domains']
 #----------------------------------------------------#
 
 
+#--------------------- create vocab ---------------------#
 data_fpath += 'dedup/'
 with open(data_fpath + 'final_domain_vocab.json') as f:
     tokens = json.load(f)
@@ -60,6 +61,8 @@ domain_tokens = np.array([domains[d] for d in domains])
 n_tokens = tokens['size']
 padding_idx = specials['-']
 mask_idx = specials['#']
+
+#----------------------------------------------------#
 
 classes = ['Alkaloid', 'Saccharide', 'NRP', 'Terpene', 'Polyketide', 'Other', 'RiPP']
 class_to_col = {c:i for i, c in enumerate(classes)}
