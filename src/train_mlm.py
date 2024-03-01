@@ -90,7 +90,7 @@ def mlmcollate(batch):
         if len(t) == 0:
             tgt.remove(t)
             continue
-        mod_idx = random.sample(list(range(len(t))), int(len(t) * 0.15)) 
+        mod_idx = random.sample(list(range(len(t))), int(len(t) * 0.15))                      # create random masking
         if len(mod_idx) == 0:
             mod_idx = [np.random.choice(len(t))]  # make sure at least one domain token is chosen
         for idx in mod_idx:
