@@ -46,10 +46,11 @@ home = str(pathlib.Path.home())                                             # /U
 data_fpath = home + '/data/bgc/'                                            
 val_fpath = data_fpath + 'output/MiBIG_1406_dataset.txt'                    # MiBIG_1406_dataset.txt  !!!
 df = pd.read_csv(val_fpath, header=None)
+df.columns = ['name', 'activity', 'domains']
 
 #----------------------------------------------------#
 
-df.columns = ['name', 'activity', 'domains']
+
 data_fpath += 'dedup/'
 with open(data_fpath + 'final_domain_vocab.json') as f:
     tokens = json.load(f)
