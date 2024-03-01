@@ -52,15 +52,20 @@ except:
     home = str(pathlib.Path.home())
     data_fpath = home + '/data/bgc/dedup/'
 df = pd.read_csv(data_fpath + 'pfams_6_genomes_deduplicate.csv')                # deduplicated training set
-# Tokenize
+
+
+#------------------------------- Tokenize -------------------------------#
 with open(data_fpath + 'final_domain_vocab.json') as f:
     tokens = json.load(f)
 specials = tokens['specials']
 domains = tokens['domains']
-domain_tokens = np.array([domains[d] for d in domains])
 n_tokens = tokens['size']
+
+domain_tokens = np.array([domains[d] for d in domains])
 padding_idx = specials['-']
 mask_idx = specials['#']
+
+# tokens
 tokens = []
 for _, row in df.iterrows():
     if args.unconditional:
@@ -73,6 +78,7 @@ for _, row in df.iterrows():
         else:
             t.append(domains['UNK'])
     tokens.append(torch.tensor(t))
+
 train_tokens = [tokens[i] for i in df[df['split'] == 'train'].index]
 valid_tokens = [tokens[i] for i in df[df['split'] == 'valid'].index]
 test_tokens = [tokens[i] for i in df[df['split'] == 'test'].index]
@@ -80,6 +86,8 @@ n_train = len(train_tokens)
 n_valid = len(valid_tokens)
 
 
+
+#-------------------------------
 def mlmcollate(batch):
     data = tuple(zip(*batch))
     tgt = data[0]
