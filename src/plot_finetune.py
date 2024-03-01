@@ -33,7 +33,7 @@ fig, ax = plt.subplots(1, 1)
 _ = sns.lineplot(data=df, y='valid_auc', x='epoch', hue='finetune', style='init', ax=ax)
 _ = fig.savefig('/home/kevyan/src/bgc/results/supervised.jpg', bbox_inches='tight')
 
-grouped = df.groupby(['init', 'finetune'])['valid_auc'].max()
+grouped = df.groupby(['init', 'finetune'])['valid_auc'].max()                                               # new df later
 
 results = []
 for ini in init:
@@ -41,7 +41,7 @@ for ini in init:
 results = np.array(results)
 results = results.mean(axis=0)
 
-#--------------------- create df ---------------------#
+#--------------------- new df ---------------------#
 home = str(pathlib.Path.home())                                             # /Users/haoshuxu
 data_fpath = home + '/data/bgc/'                                            
 val_fpath = data_fpath + 'output/MiBIG_1406_dataset.txt'                    # MiBIG_1406_dataset.txt  !!!
