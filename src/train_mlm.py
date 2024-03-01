@@ -51,7 +51,7 @@ try:
 except:
     home = str(pathlib.Path.home())
     data_fpath = home + '/data/bgc/dedup/'
-df = pd.read_csv(data_fpath + 'pfams_6_genomes_deduplicate.csv')
+df = pd.read_csv(data_fpath + 'pfams_6_genomes_deduplicate.csv')                # deduplicated training set
 # Tokenize
 with open(data_fpath + 'final_domain_vocab.json') as f:
     tokens = json.load(f)
