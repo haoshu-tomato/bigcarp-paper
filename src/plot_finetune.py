@@ -41,8 +41,8 @@ for ini in init:
 results = np.array(results)
 results = results.mean(axis=0)
 
-home = str(pathlib.Path.home())
-data_fpath = home + '/data/bgc/'                                            # /Users/haoshuxu
+home = str(pathlib.Path.home())                                             # /Users/haoshuxu
+data_fpath = home + '/data/bgc/'                                            
 val_fpath = data_fpath + 'output/MiBIG_1406_dataset.txt'                    # MiBIG_1406_dataset.txt  !!!
 df = pd.read_csv(val_fpath, header=None)
 df.columns = ['name', 'activity', 'domains']
