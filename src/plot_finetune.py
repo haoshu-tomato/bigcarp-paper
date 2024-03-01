@@ -18,7 +18,7 @@ df = []
 for f in finetune:
     for n in naive:
         for ini in init:
-            m = pd.read_csv(base_path + 'sup-%s-%s-%s/metrics.csv' %(f, n, ini), header=None)
+            m = pd.read_csv(base_path + 'sup-%s-%s-%s/metrics.csv' %(f, n, ini), header=None)                # metrics?
             m.columns = ['train_loss', 'train_accu', 'valid_loss', 'valid_accu', 'valid_auc']
             m['epoch'] = np.arange(len(m))
             m['finetune'] = f
